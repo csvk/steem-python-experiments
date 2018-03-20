@@ -10,6 +10,14 @@ import datetime
 from dateutil.relativedelta import relativedelta
 
 def vote_history_count(account_name, startdate, enddate):
+    """
+    - Find the total number of incoming and outgoing votes for any user
+    - For the same user, find the number of incoming votes from and outgoing votes to different accounts
+    :param account_name: Steemit accountname for which data needs to be fetched
+    :param startdate: Reporting period start data YYYY-MM-DD format
+    :param enddate: Reporting period end data YYYY-MM-DD format
+    :return: Users and incoming, outgoing vote count to and from @account_name
+    """
 
     start, end = datetime.datetime.strptime(startdate, '%Y-%m-%d'), \
                  datetime.datetime.strptime(enddate, '%Y-%m-%d') + relativedelta(hours=23, minutes=59, seconds=59)
@@ -61,6 +69,8 @@ def vote_history_count(account_name, startdate, enddate):
     print('Username, Incoming Votes, Outgoing Votes')
     for author in authors:
         print('{}, {}, {}'.format(author, authors[author]['incoming'], authors[author]['outgoing']))
+
+    return authors
 
 
 
