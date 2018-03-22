@@ -64,6 +64,9 @@ def vote_history_count(account_name, startdate, enddate):
                         authors[vote['voter']]['incoming'] = authors[vote['voter']]['incoming'] + 1
                     in_votes = in_votes + 1
 
+        if time_voted < start:
+            break
+
     print('Votes received: {}, votes given: {}'.format(in_votes, out_votes))
     print('Printing vote details...')
     print('Username, Incoming Votes, Outgoing Votes')
@@ -75,4 +78,4 @@ def vote_history_count(account_name, startdate, enddate):
 
 
 
-vote_history_count(account_name='svkrulze', startdate='2018-03-19', enddate='2018-03-20')
+vote_history_count(account_name='svkrulze', startdate='2018-03-21', enddate='2018-03-22')
